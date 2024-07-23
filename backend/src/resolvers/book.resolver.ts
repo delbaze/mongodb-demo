@@ -4,7 +4,7 @@ import Book, { InputCreateBook } from "../entities/book.entity";
 
 @Resolver()
 export default class BookResolver {
-  @Authorized()
+  // @Authorized()
   @Query(() => [Book])
   async books() {
     return await new BookService().listBooks();

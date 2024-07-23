@@ -15,6 +15,7 @@ import User from "./entities/user.entity";
 import { jwtVerify } from "jose";
 import UserService from "./services/user.service";
 import { customAuthChecker } from "./lib/authChecker";
+import client from "./lib/mongodb";
 
 export interface MyContext {
   req: express.Request;
@@ -71,6 +72,14 @@ async function main() {
       },
     })
   );
+
+  await client.connect();
+  // const database = client.db("application_demo");
+  // const collection = database.collection("logs");
+  // // const data = { name: "John Doe", age: 30 };
+  // //       const result = await collection.insertOne(data);
+  //       // console.log('%c⧭', 'color: #aa00ff', result);
+        
   await datasource.initialize();
   await new Promise<void>((resolve) =>
     httpServer.listen({ port: 4000 }, resolve)
