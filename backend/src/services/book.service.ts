@@ -21,11 +21,12 @@ export default class BookService {
   }
 
   async listBooks() {
+    const books = await this.db.find();
     this.log.addToLog({
       message: "Demande de la liste des livres",
-      infos: { date: Date.now() },
+      infos: { date: Date.now(), data: books },
     });
-    return this.db.find();
+    return books;
   }
 
   async createBook({ title }: InputCreateBook) {

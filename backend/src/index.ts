@@ -74,11 +74,6 @@ async function main() {
   );
 
   await client.connect();
-  // const database = client.db("application_demo");
-  // const collection = database.collection("logs");
-  // // const data = { name: "John Doe", age: 30 };
-  // //       const result = await collection.insertOne(data);
-  //       // console.log('%c⧭', 'color: #aa00ff', result);
         
   await datasource.initialize();
   await new Promise<void>((resolve) =>
